@@ -143,13 +143,31 @@ img.add_border {
         </header>
     <div id="tipue_search_content">w10 << <a href='w10.html'>Previous</a> <a href='w12.html'>Next</a> >> w12<br /><h1>w11_hw</h1>
 <p><a href="https://mdecp2024.github.io/hw-41323153su/content/Brython.html?src=https://gist.githubusercontent.com/41323153su/d2cea440cf5f67c6d526de1e6d761f02/raw/fc7d7034d1ba11a3ea85a05776a2dfa7abab3068/hw1.py">(空心圓繪製)</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 設定圓心和半徑
+    h, k = 5, 5  # 圓心位置
+    r = 5         # 半徑為 5
+    
+    # 遍歷 11x11 的區域
+    for y in range(11):
+        for x in range(11):
+            # 計算點 (x, y) 是否在圓的邊界上
+            # 使用圓形方程式判斷
+            distance = (x - h) ** 2 + (y - k) ** 2
+            # 若該點接近圓形的邊界
+            if abs(distance - r**2) &lt; 3:  # 放寬條件讓圓形邊緣更平滑
+                print('*', end='')  # 在邊界上顯示 '*'
+            else:
+                print(' ', end='')  # 否則顯示空格
+        print()  # 換行
+
+# 呼叫函式來列印更圓的空心圓
+print_better_empty_circle()</pre>
 <p><span>上次是使用"*"來做成金字塔,這次進階成圓形,我在這之中發現了圓形的組成以及操作方式</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Dyy9JM5Qgb0" width="560"></iframe></p>
 <p><a href="https://mdecp2024.github.io/hw-41323153su/content/Brython.html?src=https://gist.githubusercontent.com/41323153su/6cb6ba56a086b7ce7c929d157fe34a23/raw/76644014f0267d271eec113b8d184136a31c5b78/Hw1">(黑色方塊圓形)</a></p>
 <p><span>黑色方塊繪製成圓形更加的困難,我尋找了許多放式來嘗試繪製</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/DTe3wS8t-w0" width="560"></iframe></p>
-<p></p>
-<br />w10 << <a href='w10.html'>Previous</a> <a href='w12.html'>Next</a> >> w12</div>
+<p></p><br />w10 << <a href='w10.html'>Previous</a> <a href='w12.html'>Next</a> >> w12</div>
         
     <!-- footer -->
       <div class="container">
