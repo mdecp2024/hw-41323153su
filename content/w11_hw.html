@@ -165,6 +165,54 @@ print_better_empty_circle()</pre>
 <p><span>上次是使用"*"來做成金字塔,這次進階成圓形,我在這之中發現了圓形的組成以及操作方式</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Dyy9JM5Qgb0" width="560"></iframe></p>
 <p><a href="https://mdecp2024.github.io/hw-41323153su/content/Brython.html?src=https://gist.githubusercontent.com/41323153su/6cb6ba56a086b7ce7c929d157fe34a23/raw/76644014f0267d271eec113b8d184136a31c5b78/Hw1">(黑色方塊圓形)</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+import math
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+
+# 每一格的 pixel 數
+gs = 20  # 格子大小
+
+ctx = canvas.getContext("2d")
+
+def dRect(lux, luy, w, h, s=1, c='#ff0000'):
+    """繪製單個格子"""
+    ctx.lineWidth = s
+    ctx.strokeStyle = c
+    ctx.beginPath()
+    ctx.rect(lux, luy, w, h)
+    ctx.stroke()
+
+def grid(width, height, grid_pix):
+    """繪製格子網格"""
+    for i in range(width):
+        for j in range(height):
+            dRect(i * grid_pix, j * grid_pix, grid_pix, grid_pix, 1, "lightgrey")
+
+def fill(x, y, color):
+    """填充格子"""
+    ctx.fillStyle = color
+    ctx.fillRect(x * gs, y * gs, gs, gs)
+
+def draw_hollow_circle(center_x, center_y, radius, tolerance=0.5):
+    """使用格子在 11x11 網格上畫空心圓"""
+    for x in range(11):
+        for y in range(11):
+            # 計算格子中心 (x, y) 到圓心 (center_x, center_y) 的距離
+            dist = math.sqrt((x - center_x) ** 2 + (y - center_y) ** 2)
+            # 檢查距離是否在圓的半徑範圍內，並且距離接近半徑 (即為圓的邊界)
+            if abs(dist - radius) &lt;= tolerance:
+                fill(x, y, "black")
+
+# 繪製 11x11 格子
+grid(11, 11, gs)
+
+# 圓心位置在 (5, 5)，半徑為 4，容差範圍為 0.5
+draw_hollow_circle(5, 5, 4, tolerance=0.5)</pre>
 <p><span>黑色方塊繪製成圓形更加的困難,我尋找了許多放式來嘗試繪製</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/DTe3wS8t-w0" width="560"></iframe></p>
 <p></p><br />w10 << <a href='w10.html'>Previous</a> <a href='w12.html'>Next</a> >> w12</div>
