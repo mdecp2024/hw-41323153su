@@ -154,6 +154,12 @@ canvas = html.CANVAS(width=400, height=400)
 brython_div = doc["brython_div1"]
 brython_div <= canvas
 ctx = canvas.getContext("2d")
+# 繪製兩個矩形
+ctx.strokeStyle = 'red'  # 設定矩形顏色為紅色
+ctx.beginPath() 
+ctx.rect(10, 10, 200, 200)
+ctx.rect(110, 110, 200, 200)
+ctx.stroke()
 
 ctx.lineWidth = 1
 ctx.strokeStyle = 'blue'  
