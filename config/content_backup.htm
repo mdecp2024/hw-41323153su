@@ -201,13 +201,6 @@ brython_div = doc["brython div1"]
 brython_div <= canvas
 ctx = canvas.getContext("2d")
 
-# 設置畫布
-canvas = html.CANVAS(width=600, height=600)
-brython_div = doc["brython_div1"]
-brython_div <= canvas
-
-ctx = canvas.getContext("2d")
-ctx.lineWidth = 1
 
 # 畫兩個矩形 (紅色邊框)
 ctx.strokeStyle = 'red'
@@ -289,7 +282,7 @@ def get_region_color(x, y):
         if x > shapes["square2"][2]:
             return "#6FB7B7"  
 
-    return "#FF9224"  # 
+    return "#FF9224"  
 
 # 繪製掃描點並著色
 def scan_and_draw():
