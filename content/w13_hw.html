@@ -142,7 +142,6 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">w12 << <a href='w12.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2<br /><h1>w13_hw</h1>
-<p><a href="https://mdecp2024.github.io/hw-41323153su/content/Brython.html?src=https://gist.githubusercontent.com/41323153su/2c28bcfb778c989d002e19e9506dc952/raw/b03e95115377b55ded36922856b4ea706005a3bb/w13">(w13)</a></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">&lt;!-- 引入 Brython 程式庫 --&gt;
 &lt;script src="./../cmsimde/static/brython.js"&gt;&lt;/script&gt;
 &lt;script src="./../cmsimde/static/brython_stdlib.js"&gt;&lt;/script&gt;
@@ -158,61 +157,12 @@ window.onload = function() {
 &lt;script type="text/python"&gt;// &lt;![CDATA[
 from browser import html
 from browser import document as doc
-
+ 
 # 利用 HTML 建立 canvas 並定義特性
 canvas = html.CANVAS(width=600, height=600)
 brython_div = doc["brython div1"]
 brython_div &lt;= canvas
 ctx = canvas.getContext("2d")
-
-ctx.strokeStyle = 'red'  # 設定矩形的邊框顏色為紅色
-ctx.beginPath()
-ctx.rect(100, 100, 200, 200)  # 第一個正方形的左上角在(100, 100)，邊長200
-ctx.rect(200, 200, 200, 200)  # 第二個正方形的左上角在(200, 200)，邊長200
-ctx.stroke()
-
-# 2. 繪製對角線 (藍色) - 只連接第一個矩形的左上角和第一個矩形的右下角
-ctx.strokeStyle = 'blue'  # 設定對角線顏色為藍色
-ctx.beginPath()
-ctx.moveTo(100, 100)  # 起點為第一個矩形的左上角 (100, 100)
-ctx.lineTo(300, 300)  # 終點為第一個矩形的右下角 (300, 300)
-ctx.stroke()
-
-# 3. 繪製兩個外切圓 (黑色)
-ctx.strokeStyle = 'black'  # 設定圓的顏色為黑色
-
-# 第一個矩形的外切圓
-ctx.beginPath()
-ctx.arc(200, 200, 141.4, 0, 2 * 3.14)  # 圓心在(200, 200)，半徑為141.4（sqrt(2) * 邊長的一半）
-ctx.stroke()
-
-# 第二個矩形的外切圓
-ctx.beginPath()
-ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  # 圓心在(300, 300)，半徑為141.4
-ctx.stroke()
-// ]]&gt;&lt;/script&gt;
-&lt;!-- 引入 Brython 程式庫 --&gt;
-&lt;script src="./../cmsimde/static/brython.js"&gt;&lt;/script&gt;
-&lt;script src="./../cmsimde/static/brython_stdlib.js"&gt;&lt;/script&gt;
-&lt;!-- 啟動 Brython --&gt;
-&lt;script&gt;// &lt;![CDATA[
-window.onload = function() {
-    brython({debug:1, pythonpath:['./../cmsimde/static/', '../../downloads/py/']});
-}
-// ]]&gt;&lt;/script&gt;
-&lt;!-- 設置容器 --&gt;
-&lt;div id="brython div1"&gt;&lt;/div&gt;
-&lt;!-- 利用 Brython 繪圖 --&gt;
-&lt;script type="text/python"&gt;// &lt;![CDATA[
-from browser import html
-from browser import document as doc
-
-# 利用 HTML 建立 canvas 並定義特性
-canvas = html.CANVAS(width=600, height=600)
-brython_div = doc["brython div1"]
-brython_div &lt;= canvas
-ctx = canvas.getContext("2d")
-
 
 # 畫兩個矩形 (紅色邊框)
 ctx.strokeStyle = 'red'
@@ -294,7 +244,7 @@ def get_region_color(x, y):
         if x &gt; shapes["square2"][2]:
             return "#6FB7B7"  
 
-    return "#FF9224"  
+    return "#FF9224"  # 
 
 # 繪製掃描點並著色
 def scan_and_draw():
@@ -307,8 +257,7 @@ def scan_and_draw():
                 ctx.fillRect(x, y, step, step)  # 使用細小矩形填充
 
 # 開始掃描和著色
-scan_and_draw()
-// ]]&gt;&lt;/script&gt;</pre>
+scan_and_draw()</pre>
 <!-- 引入 Brython 程式庫 -->
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
@@ -324,61 +273,12 @@ window.onload = function() {
 <script type="text/python">
 from browser import html
 from browser import document as doc
-
+ 
 # 利用 HTML 建立 canvas 並定義特性
 canvas = html.CANVAS(width=600, height=600)
 brython_div = doc["brython div1"]
 brython_div <= canvas
 ctx = canvas.getContext("2d")
-
-ctx.strokeStyle = 'red'  # 設定矩形的邊框顏色為紅色
-ctx.beginPath()
-ctx.rect(100, 100, 200, 200)  # 第一個正方形的左上角在(100, 100)，邊長200
-ctx.rect(200, 200, 200, 200)  # 第二個正方形的左上角在(200, 200)，邊長200
-ctx.stroke()
-
-# 2. 繪製對角線 (藍色) - 只連接第一個矩形的左上角和第一個矩形的右下角
-ctx.strokeStyle = 'blue'  # 設定對角線顏色為藍色
-ctx.beginPath()
-ctx.moveTo(100, 100)  # 起點為第一個矩形的左上角 (100, 100)
-ctx.lineTo(300, 300)  # 終點為第一個矩形的右下角 (300, 300)
-ctx.stroke()
-
-# 3. 繪製兩個外切圓 (黑色)
-ctx.strokeStyle = 'black'  # 設定圓的顏色為黑色
-
-# 第一個矩形的外切圓
-ctx.beginPath()
-ctx.arc(200, 200, 141.4, 0, 2 * 3.14)  # 圓心在(200, 200)，半徑為141.4（sqrt(2) * 邊長的一半）
-ctx.stroke()
-
-# 第二個矩形的外切圓
-ctx.beginPath()
-ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  # 圓心在(300, 300)，半徑為141.4
-ctx.stroke()
-</script>
-<!-- 引入 Brython 程式庫 -->
-<script src="./../cmsimde/static/brython.js"></script>
-<script src="./../cmsimde/static/brython_stdlib.js"></script>
-<!-- 啟動 Brython -->
-<script>
-window.onload = function() {
-    brython({debug:1, pythonpath:['./../cmsimde/static/', '../../downloads/py/']});
-}
-</script>
-<!-- 設置容器 -->
-<div id="brython div1"></div>
-<!-- 利用 Brython 繪圖 -->
-<script type="text/python">
-from browser import html
-from browser import document as doc
-
-# 利用 HTML 建立 canvas 並定義特性
-canvas = html.CANVAS(width=600, height=600)
-brython_div = doc["brython div1"]
-brython_div <= canvas
-ctx = canvas.getContext("2d")
-
 
 # 畫兩個矩形 (紅色邊框)
 ctx.strokeStyle = 'red'
@@ -460,7 +360,7 @@ def get_region_color(x, y):
         if x > shapes["square2"][2]:
             return "#6FB7B7"  
 
-    return "#FF9224"  
+    return "#FF9224"  # 
 
 # 繪製掃描點並著色
 def scan_and_draw():
