@@ -558,6 +558,22 @@ print(f"從 1 累加到 100 的總和是: {total}")
 # 調用函式
 result = addto(1, 100)
 print("從 1 累加到 100 的總和是:", result)</pre>
+<p><a href="https://mdecp2024.github.io/hw-41323153su/content/Brython.html?src=https://gist.githubusercontent.com/41323153su/f12cf65b30611c07613c3e0809f6e69e/raw/11452317c36a3e1c8721a9625583882ed7b0a8de/%25E9%25A1%258C%25E7%259B%25AE%25E4%25B8%2589(add_only_even)">(add_only_even)</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def add_only_even(start, end):
+    # 初始化總和為 0
+    total = 0
+    
+    # 遍歷從 start 到 end 的數字
+    for i in range(start, end + 1):
+        if i % 2 == 0:  # 判斷是否為偶數
+            total += i  # 如果是偶數，則累加到 total
+    
+    return total  # 返回總和
+
+# 調用函式，計算從 1 到 100 的偶數總和
+result = add_only_even(1, 100)
+print(f"從 1 加到 100 之間的偶數總和是: {result}")
+</pre>
 <p></p><h1>HW2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
