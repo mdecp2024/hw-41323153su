@@ -195,6 +195,18 @@ print(f"從 1 加到 100 之間的偶數總和是: {result}")
 # 調用函式，計算從 1 到 100 的累加總和，避開數字中包含 '8' 的數字
 result = add_avoid_8(1, 100)
 print(f"從 1 到 100 累加，避開數字包含 '8' 的總和是: {result}")</pre>
+<p>(<a href="https://mdecp2024.github.io/hw-41323153su/content/Brython.html?src=https://gist.githubusercontent.com/41323153su/f12cf65b30611c07613c3e0809f6e69e/raw/f6314cad035b7b0d1f66e8d821fefe79ce20be10/%25E9%25A1%258C%25E7%259B%25AE%25E5%259B%259B-2">(add_avoid_8_3)</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def add_avoid_8(start, end):
+    total = 0  # 初始化總和變數
+    for i in range(start, end + 1):  # 從 start 到 end（包含 end）
+        if '8' in str(i) or '3' in str(i):  # 檢查數字中是否包含 '8' 或 '3'
+            continue  # 如果包含 '8' 或 '3'，跳過這個數字
+        total += i  # 如果不包含，則將數字加到總和
+    return total  # 返回總和
+
+# 呼叫函式並輸出結果
+result = add_avoid_8(1, 100)
+print("從 1 累加到 100 的總和，避開含有 8 和 3 的數字，是:", result)</pre>
 <p></p><br />w14_ex << <a href='w14_ex.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2</div>
         
     <!-- footer -->
