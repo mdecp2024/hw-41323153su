@@ -613,6 +613,113 @@ print("從 1 累加到 100 的總和，避開含有 8 和 3 的數字，是:", r
 <h3>w16_exam1</h3>
 <p><a href="https://mdecp2024.github.io/hw-41323153su/content/Brython.html?src=https://gist.githubusercontent.com/41323153su/790df00a78584d23762f453f8bd83a43/raw/7c839db188341f8f99a534d10db352612f9551f2/%25E5%259C%2596%25E5%25BD%25A2">(w16圖形)</a></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/TNiudqUL9Ns" width="560"></iframe></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    
+    &lt;!-- 引入 Brython 程式庫 --&gt;
+    &lt;script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.5/brython.min.js"&gt;&lt;/script&gt;
+    
+    &lt;!-- 啟動 Brython --&gt;
+    &lt;script type="text/javascript"&gt;
+        window.onload = function() {
+            brython();  // 啟動 Brython
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body onload="brython()"&gt;
+    &lt;!-- 用來顯示畫布的區域 --&gt;
+    &lt;div id="brython_div1"&gt;&lt;/div&gt;
+
+    &lt;!-- 你的 Brython Python 程式碼 --&gt;
+    &lt;script type="text/python"&gt;
+        from browser import html
+        from browser import document as doc
+
+        # 利用 html 建立 canvas 超文件物件，設置為長方形
+        canvas = html.CANVAS(width=600, height=400)  # 設置畫布大小為 600x400
+        brython_div = doc["brython_div1"]
+        brython_div &lt;= canvas
+
+        # 取得 canvas 的繪圖上下文
+        ctx = canvas.getContext("2d")
+
+        # 畫出 X 軸
+        ctx.beginPath()
+        ctx.strokeStyle = 'black'
+        ctx.lineWidth = 2
+        ctx.moveTo(31, 53)  # 原點
+        ctx.lineTo(570, 53)  # 向右延伸，畫布寬度為 600，故延伸到 570 (避免畫布右邊界)
+        ctx.stroke()
+
+        # 畫出 Y 軸
+        ctx.beginPath()
+        ctx.moveTo(31, 53)  # 原點
+        ctx.lineTo(31, 350)  # 向下延伸，畫布高度為 400，故延伸到 350 (避免畫布下邊界)
+        ctx.stroke()
+
+        # 標示原點座標
+        ctx.font = "12px Arial"
+        ctx.fillStyle = "black"
+        ctx.fillText("(31, 53)", 35, 65)
+
+        # 位移偏移量，將原點 (31, 53) 作為新的繪圖基準
+        offset_x = 31
+        offset_y = 53
+
+        # 畫橙色六邊形
+        ctx.beginPath()
+        ctx.fillStyle = "#F47920"
+        ctx.moveTo(offset_x + 30, offset_y + 40)  # 向下調整起始位置
+        ctx.lineTo(offset_x + 50, offset_y + 20)
+        ctx.lineTo(offset_x + 80, offset_y + 20)
+        ctx.lineTo(offset_x + 100, offset_y + 40)
+        ctx.lineTo(offset_x + 80, offset_y + 60)
+        ctx.lineTo(offset_x + 50, offset_y + 60)
+        ctx.closePath()
+        ctx.fill()
+
+        # 畫綠色菱形
+        ctx.beginPath()
+        ctx.fillStyle = "#009F95"
+        ctx.moveTo(offset_x + 110, offset_y + 40)  # 向下調整
+        ctx.lineTo(offset_x + 130, offset_y + 20)
+        ctx.lineTo(offset_x + 150, offset_y + 40)
+        ctx.lineTo(offset_x + 130, offset_y + 60)
+        ctx.closePath()
+        ctx.fill()
+
+        # 藍色三角形 (頂點在菱形右側，方向朝下)
+        ctx.beginPath()
+        ctx.fillStyle = "#40B4CB"
+        ctx.moveTo(offset_x + 160, offset_y + 40)  # 頂點在菱形右側
+        ctx.lineTo(offset_x + 140, offset_y + 60)  # 左下角
+        ctx.lineTo(offset_x + 180, offset_y + 60)  # 右下角
+        ctx.closePath()
+        ctx.fill()
+
+        # 畫粉紅色圓形
+        ctx.beginPath()
+        ctx.fillStyle = "#EB008B"
+        ctx.arc(offset_x + 200, offset_y + 40, 12, 0, 2 * 3.14159)  # 半徑縮小並調整位置
+        ctx.fill()
+
+        # 畫黃色正方形
+        ctx.beginPath()
+        ctx.fillStyle = "#FDD56A"
+        ctx.rect(offset_x + 230, offset_y + 20, 25, 25)  # 向下調整位置
+        ctx.fill()
+
+        # 畫藍色矩形
+        ctx.beginPath()
+        ctx.fillStyle = "#003A70"
+        ctx.rect(offset_x + 270, offset_y + 30, 40, 15)  # 向下調整位置
+        ctx.fill()
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
 <p></p>
 <p></p><h1>HW 3</h1>
 <h4>主題: Python 的數字、演算法與迴圈 (20%)</h4>
