@@ -721,7 +721,105 @@ print("從 1 累加到 100 的總和，避開含有 8 和 3 的數字，是:", r
 &lt;/body&gt;
 &lt;/html&gt;</pre>
 <p></p>
-<p></p><h1>HW 3</h1>
+<p></p>
+<p></p>
+<!-- 引入 Brython 程式庫 -->
+<script src="https://cdn.jsdelivr.net/npm/brython@3.10.5/brython.min.js" type="text/javascript"></script>
+<!-- 啟動 Brython -->
+<script type="text/javascript">
+        window.onload = function() {
+            brython();  // 啟動 Brython
+        }
+    
+</script>
+<!-- 用來顯示畫布的區域 -->
+<div id="brython_div1"></div>
+<!-- 你的 Brython Python 程式碼 -->
+<script type="text/python">
+        from browser import html
+        from browser import document as doc
+
+        # 利用 html 建立 canvas 超文件物件，設置為長方形
+        canvas = html.CANVAS(width=600, height=400)  # 設置畫布大小為 600x400
+        brython_div = doc["brython_div1"]
+        brython_div <= canvas
+
+        # 取得 canvas 的繪圖上下文
+        ctx = canvas.getContext("2d")
+
+        # 畫出 X 軸
+        ctx.beginPath()
+        ctx.strokeStyle = 'black'
+        ctx.lineWidth = 2
+        ctx.moveTo(31, 53)  # 原點
+        ctx.lineTo(570, 53)  # 向右延伸，畫布寬度為 600，故延伸到 570 (避免畫布右邊界)
+        ctx.stroke()
+
+        # 畫出 Y 軸
+        ctx.beginPath()
+        ctx.moveTo(31, 53)  # 原點
+        ctx.lineTo(31, 350)  # 向下延伸，畫布高度為 400，故延伸到 350 (避免畫布下邊界)
+        ctx.stroke()
+
+        # 標示原點座標
+        ctx.font = "12px Arial"
+        ctx.fillStyle = "black"
+        ctx.fillText("(31, 53)", 35, 65)
+
+        # 位移偏移量，將原點 (31, 53) 作為新的繪圖基準
+        offset_x = 31
+        offset_y = 53
+
+        # 畫橙色六邊形
+        ctx.beginPath()
+        ctx.fillStyle = "#F47920"
+        ctx.moveTo(offset_x + 30, offset_y + 40)  # 向下調整起始位置
+        ctx.lineTo(offset_x + 50, offset_y + 20)
+        ctx.lineTo(offset_x + 80, offset_y + 20)
+        ctx.lineTo(offset_x + 100, offset_y + 40)
+        ctx.lineTo(offset_x + 80, offset_y + 60)
+        ctx.lineTo(offset_x + 50, offset_y + 60)
+        ctx.closePath()
+        ctx.fill()
+
+        # 畫綠色菱形
+        ctx.beginPath()
+        ctx.fillStyle = "#009F95"
+        ctx.moveTo(offset_x + 110, offset_y + 40)  # 向下調整
+        ctx.lineTo(offset_x + 130, offset_y + 20)
+        ctx.lineTo(offset_x + 150, offset_y + 40)
+        ctx.lineTo(offset_x + 130, offset_y + 60)
+        ctx.closePath()
+        ctx.fill()
+
+        # 藍色三角形 (頂點在菱形右側，方向朝下)
+        ctx.beginPath()
+        ctx.fillStyle = "#40B4CB"
+        ctx.moveTo(offset_x + 160, offset_y + 40)  # 頂點在菱形右側
+        ctx.lineTo(offset_x + 140, offset_y + 60)  # 左下角
+        ctx.lineTo(offset_x + 180, offset_y + 60)  # 右下角
+        ctx.closePath()
+        ctx.fill()
+
+        # 畫粉紅色圓形
+        ctx.beginPath()
+        ctx.fillStyle = "#EB008B"
+        ctx.arc(offset_x + 200, offset_y + 40, 12, 0, 2 * 3.14159)  # 半徑縮小並調整位置
+        ctx.fill()
+
+        # 畫黃色正方形
+        ctx.beginPath()
+        ctx.fillStyle = "#FDD56A"
+        ctx.rect(offset_x + 230, offset_y + 20, 25, 25)  # 向下調整位置
+        ctx.fill()
+
+        # 畫藍色矩形
+        ctx.beginPath()
+        ctx.fillStyle = "#003A70"
+        ctx.rect(offset_x + 270, offset_y + 30, 40, 15)  # 向下調整位置
+        ctx.fill()
+    
+</script><h1>HW 3</h1>
 <h4>主題: Python 的數字、演算法與迴圈 (20%)</h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 4 and Part 5</p>
 <p>完成上述流程整理後, 請將 HW3 自評分數輸入 cp2024 自評表單中.</p>
