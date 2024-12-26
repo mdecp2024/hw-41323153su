@@ -828,7 +828,76 @@ print("從 1 累加到 100 的總和，避開含有 8 和 3 的數字，是:", r
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 3 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <p></p>
 <p></p>
-<h3><span>w16_exam2</span></h3><h1>HW 4</h1>
+<h3>w16_exam2</h3>
+<p><a href="https://mdecp2024.github.io/hw-41323153su/content/Brython.html?src=https://gist.githubusercontent.com/41323153su/790df00a78584d23762f453f8bd83a43/raw/4892eec4684534aac143611108213860eacf0bfa/%25E8%25BF%25B7%25E5%25AE%25AE">(迷宮)</a></p>
+<p></p>
+<script src="https://cdn.jsdelivr.net/npm/brython@3.10.5/brython.min.js" type="text/javascript"></script>
+<!-- A div where we will place the canvas -->
+<div id="brython_div1"></div>
+<script type="text/python">
+    from browser import html
+    from browser import document as doc
+
+    # Create a canvas with width and height of 300x300 pixels
+    canvas = html.CANVAS(width=300, height=300)
+    brython_div = doc["brython_div1"]
+    brython_div <= canvas  # Append canvas to the div
+
+    # Get the 2d context to draw on the canvas
+    ctx = canvas.getContext("2d")
+
+    # Maze size
+    width, height = 300, 300
+
+    # Create a grid filled with walls (1 = wall, 0 = path)
+    maze = [[1] * width for _ in range(height)]
+
+    # Function to generate maze (Depth-First Search)
+    def generate_maze(x, y):
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # Right, Down, Left, Up
+        random.shuffle(directions)  # Randomize directions
+        for dx, dy in directions:
+            nx, ny = x + dx * 2, y + dy * 2
+            if 0 < nx < height - 1 and 0 < ny < width - 1 and maze[nx][ny] == 1:
+                maze[nx][ny] = 0  # Mark the new cell as a path
+                maze[x + dx][y + dy] = 0  # Remove the wall between the cells
+                generate_maze(nx, ny)  # Recursively generate the maze
+
+    # Start from (1, 1)
+    maze[1][1] = 0
+    generate_maze(1, 1)
+
+    # Set the exit point at the bottom right corner
+    maze[height - 2][width - 2] = 0
+
+    # Function to draw the maze on the canvas
+    def draw_maze():
+        for y in range(height):
+            for x in range(width):
+                if maze[y][x] == 1:
+                    ctx.fillStyle = 'black'  # Wall color
+                else:
+                    ctx.fillStyle = 'white'  # Path color
+
+                # Draw the cell
+                ctx.fillRect(x, y, 1, 1)  # Each cell is 1x1 pixel
+
+        # Mark a specific coordinate (31, 53) with a red dot
+        coord_x, coord_y = 31, 53
+        ctx.fillStyle = 'red'
+        ctx.beginPath()
+        ctx.arc(coord_y, coord_x, 3, 0, 2 * 3.14159)  # Draw a red dot at (31, 53)
+        ctx.fill()
+
+        # Draw a blue border around the coordinate (31, 53)
+        border_size = 2  # Thickness of the border
+        ctx.strokeStyle = 'blue'
+        ctx.lineWidth = border_size
+        ctx.strokeRect(coord_y - border_size, coord_x - border_size, 5 + border_size * 2, 5 + border_size * 2)
+
+    # Draw the maze on the canvas
+    draw_maze()
+</script><h1>HW 4</h1>
 <h4>主題: 利用 Python 控制機電模擬系統 (20%)</h4>
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
 <p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
